@@ -23,13 +23,11 @@ public class IngredientTypeTest {
     @Parameters({"SAUCE", "FILLING"})
     public void checkIngredientType_hasAllTypes (String type) throws Exception {
         IllegalArgumentException exception = null;
-
         try {
             IngredientType ingredientType = IngredientType.valueOf(type);
         } catch (IllegalArgumentException ex) {
             exception = ex;
         }
-
         Assert.assertNull("There is no enum constant \"" + type + "\" in the IngredientType.", exception);
     }
 }

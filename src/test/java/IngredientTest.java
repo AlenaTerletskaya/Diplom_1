@@ -12,7 +12,6 @@ import praktikum.Ingredient;
 import praktikum.IngredientType;
 
 // Тесты модели ингредиента (класс Ingredient)
-@RunWith(JUnitParamsRunner.class)
 public class IngredientTest {
 
     @Rule public MockitoRule rule = MockitoJUnit.rule();
@@ -40,5 +39,4 @@ public class IngredientTest {
         mockIngredient.getType();
         Mockito.verify(mockIngredient).getType();
     }
-
 }

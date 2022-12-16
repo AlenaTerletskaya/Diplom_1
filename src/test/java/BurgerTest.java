@@ -14,8 +14,8 @@ import praktikum.Ingredient;
 import praktikum.IngredientType;
 
 // Тесты модели бургера (класс Burger)
-@RunWith(JUnitParamsRunner.class)
 public class BurgerTest {
+
     @Rule
     public MockitoRule rule = MockitoJUnit.rule();
 
@@ -103,7 +103,6 @@ public class BurgerTest {
         burger.addIngredient(mockIngr);
         burger.addIngredient(mockIngr2);
         burger.moveIngredient(0, 1);
-
         Assert.assertEquals("An ingredient with index 0 should be equal to " + mockIngr2,
                 mockIngr2, burger.ingredients.get(0));
         Assert.assertEquals("An ingredient with index 1 should be equal to " + mockIngr,
@@ -125,10 +124,8 @@ public class BurgerTest {
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngr);
         burger.addIngredient(mockIngr);
-
         Mockito.when(mockBun.getPrice()).thenReturn(100f);
         Mockito.when(mockIngr.getPrice()).thenReturn(30f, 50f);
-
         float expectedPrice = 280f;
         Assert.assertEquals("The burger price should be equal to" + expectedPrice,
                 expectedPrice, burger.getPrice(), 0.001);
@@ -140,9 +137,7 @@ public class BurgerTest {
     public void checkBurgerGetPrice_BunNoIngr_returnBurgerPrice() {
         Burger burger = new Burger();
         burger.setBuns(mockBun);
-
         Mockito.when(mockBun.getPrice()).thenReturn(100f);
-
         float expectedPrice = 200f;
         Assert.assertEquals("The burger price should be equal to" + expectedPrice,
                 expectedPrice, burger.getPrice(), 0.001);
@@ -160,12 +155,10 @@ public class BurgerTest {
     public void checkBurgerGetReceipt_returnExpectedReceipt() {
         spyBurger.setBuns(mockBun);
         spyBurger.addIngredient(mockIngr);
-
         Mockito.when(mockBun.getName()).thenReturn("black bun");
         Mockito.when(mockIngr.getType()).thenReturn(IngredientType.SAUCE);
         Mockito.when(mockIngr.getName()).thenReturn("sour cream");
         Mockito.when(spyBurger.getPrice()).thenReturn(350f);
-
         String expectedReceipt = String.format(
                 "(==== black bun ====)%n" +
                 "= sauce sour cream =%n" +
@@ -174,5 +167,4 @@ public class BurgerTest {
         Assert.assertEquals("The receipt should be equal to: \n" + expectedReceipt,
                 expectedReceipt, spyBurger.getReceipt());
     }
-
 }

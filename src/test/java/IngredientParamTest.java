@@ -21,7 +21,7 @@ public class IngredientParamTest {
     }
 
     // Метод для получения данных
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные - тип:  {0}, имя: {1}, цена: {2}")
     public static Object[][] getTestData() {
         return new Object[][] {
                 {IngredientType.SAUCE, "hot sauce", 200.3f},
@@ -36,13 +36,10 @@ public class IngredientParamTest {
     // Тип, имя и цена созданного экземпляра ингредиента соответствуют переданным параметрам.
     @Test
     public void checkIngrCreate_expectIngrNotNull_hasTypeNamePrice () {
-
         Ingredient ingredient = new Ingredient(type, name, price);
-
         Assert.assertNotNull("The ingredient should not be null", ingredient);
         Assert.assertEquals("The type should be equal to: " + type, type, ingredient.getType());
         Assert.assertEquals("The name should be equal to: " + name, name, ingredient.getName());
         Assert.assertEquals("The price should be equal to: " + price, price, ingredient.getPrice(), 0.001);
     }
-
 }

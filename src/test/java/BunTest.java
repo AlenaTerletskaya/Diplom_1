@@ -50,5 +50,4 @@ public class BunTest {
         Assert.assertEquals("Name should be equal to: " + name, name, bun.getName());
         Assert.assertEquals("Price should be equal to: " + price, price, bun.getPrice(), 0.001);
     }
-
 }
